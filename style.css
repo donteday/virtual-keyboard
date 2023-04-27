@@ -10,6 +10,11 @@
     font-family: 'Roboto', sans-serif;
 }
 
+br {
+    display: block;
+    width: 100%;
+}
+
 .clearfix {
     display: block;
     width: 100%;
@@ -37,7 +42,7 @@
     -4px -4px 8px #fff;
 }
 
-.key-button {
+.key-button, i {
     display: grid;
     width: 50px;
     height: 50px;
