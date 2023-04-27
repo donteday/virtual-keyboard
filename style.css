@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=VT323&display=swap');
 
 * {
     margin: 0;
@@ -24,22 +24,30 @@ br {
 .board {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     margin: 0 auto;
-    max-width: 1000px;
-    padding: 30px 0;
-    gap: 10px;
+    max-width: 950px;
+    padding: 20px;
+    gap: 8px;
+    border-radius: 10px;
+    box-shadow:
+    4px 4px 8px #0002,
+    -4px -4px 8px #fff;
+    
 }
 
 .textarea {
     display: block;
     padding: 10px;
     margin: 40px auto;
-    border: none;
     border-radius: 8px;
     box-shadow:
     4px 4px 8px #0002,
-    -4px -4px 8px #fff;
+    -6px -6px 8px #fff;
+    background-color: #171717f1;
+    color: #00bf1d;
+    font-family: 'VT323', monospace;
+    font-size: 30px;
 }
 
 .key-button, i {
@@ -51,7 +59,8 @@ br {
         4px 4px 8px #0002,
         -4px -4px 8px #fff;
     place-content: center;
-    transition: all .5s ease;      
+    transition: all .5s ease;
+    background-color: #efefef;      
 }
 
 .key-button:hover, .active {

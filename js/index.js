@@ -11,8 +11,6 @@ const Keyboard = {
             'CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'Enter',
             'Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'ArrowUp', 'Shift2',
             'Control', 'Meta', 'Alt', 'Space', 'Alt', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'Control'],
-
-        ru: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace', 'Tab', 'й', 'ц', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'Enter', 'Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'Shift2', 'Ctrl', 'Meta', 'Alt', ' ', 'Alt', 'ContM', 'Control'],
     },
 
     init() {
@@ -91,13 +89,17 @@ const Keyboard = {
                     board.appendChild(keyButton);
                     break;
             }
-
-
-
         });
     }
 }
 
+const textArea = document.createElement('textarea');
+textArea.rows = 8;
+textArea.cols = 79;
+textArea.className = 'textarea';
+textArea.value = 'Wake Up Neo...';
+
+body.appendChild(textArea);
 
 Keyboard.init();
 
