@@ -53,6 +53,9 @@ export class Keyboard {
                 break;
             case 'Shift':
                 break;
+            case 'Delete':
+                textarea.value = textarea.value.slice(0, textarea.selectionEnd) + textarea.value.slice(textarea.selectionEnd, 1); // TODO
+                break;
             case 'ArrowLeft':
                 textarea.setSelectionRange(textarea.selectionStart - 1, textarea.selectionStart - 1);
                 break;
@@ -63,7 +66,7 @@ export class Keyboard {
                 break;
             case 'Alt':
                 break;
-            
+
             default:
                 textarea.value += this.isCapsLockOn || this.isShiftOn ? key.toUpperCase() : key.toLowerCase();
         }
@@ -150,11 +153,9 @@ export class Keyboard {
                     board.appendChild(keyButton);
                     break;
             }
-            keyButton.dataset.name = element;
+            keyButton.dataset.name = element.toLowerCase();
             keyButton.addEventListener('click', () => this.pressKey(element));
         });
-
-
-
     }
+
 }

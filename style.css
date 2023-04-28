@@ -17,6 +17,7 @@
 }
 
 .board {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -40,7 +41,7 @@
     4px 4px 8px #0002,
     -6px -6px 8px #fff;
     background-color: #171717f1;
-    color: #00bf1d;
+    color: #02e124;
     font-family: 'VT323', monospace;
     font-size: 30px;
 }
@@ -87,10 +88,12 @@
     right: 10px;
     background-color: #3838386d;
     border-radius: 50%;
+    transition: all .5s ease-out;
 }
 
 .key-caps--active:after {
     background-color: #00bf1d;
+    box-shadow: 0 0 10px rgb(2, 253, 60);
 }
 .key-arrow-right, .key-arrow-up, .key-arrow-left, .key-arrow-down {
     position: relative;
@@ -122,4 +125,12 @@
     transform: rotate(90deg);
 }
 
+.board::after {
+    content: "Переключение языка: Alt+Shift";
+    display: block;
+    position: absolute;
+    bottom: -30px;
+    left: 10px;
+    color: rgb(186, 186, 186);
+}
 
