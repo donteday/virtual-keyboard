@@ -67,10 +67,28 @@
     background-color: #dedede88;
 }
 
-.key-long {
+.key-long, .key-caps{
+    position: relative;
     width: 120px;
 }
 
 .key-space {
     width: 400px;
 }
+
+.key-caps:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 10px;
+    right: 10px;
+    background-color: #3838386d;
+    border-radius: 50%;
+}
+
+.key-caps--active:after {
+    background-color: #00bf1d;
+}
+

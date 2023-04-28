@@ -13,15 +13,63 @@ export class Keyboard {
             'Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'Delete',
             'CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'Enter',
             'Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'ArrowUp', 'Shift2',
-            'Control', 'Meta', 'Alt', 'Space', 'Alt', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'Control'],
+            'Control', 'Meta', 'Alt', ' ', 'Alt', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'Control'],
+        ru: ['2', '2', '2', '3', '4', '5'],
     };
+
+    pressKey(key) {
+        const textarea = document.querySelector('.textarea');
+        switch (key) {
+            case 'Lang':
+                this.language = this.language === 'en' ? 'ru' : 'en';
+                this.currentKeys = this.keys[this.language];
+                break;
+            case 'Backspace':
+                textarea.value = textarea.value.slice(0, -1);
+                break;
+            case 'Space':
+                textarea.value += ' ';
+                break;
+            case 'CapsLock':
+                this.isCapsLockOn = !this.isCapsLockOn;
+
+                document.querySelectorAll('.key-button').forEach(el => {
+                    if (el.textContent.length === 1) {
+                        el.textContent = this.isCapsLockOn ? el.textContent.toUpperCase() : el.textContent.toLowerCase();
+                    }
+                })
+
+                document.querySelector('.key-caps').classList.toggle('key-caps--active');
+                break;
+            case 'Enter':
+                textarea.value += '\n';
+                break;
+            case 'Tab':
+                textarea.value += '\t';
+                break;
+            case 'Shift':
+                break;
+            case 'ArrowLeft':
+                textarea.setSelectionRange(textarea.selectionStart - 1, textarea.selectionStart - 1);
+                break;
+            case 'ArrowRight':
+                textarea.setSelectionRange(textarea.selectionStart + 1, textarea.selectionStart + 1);
+                break;
+            case 'ArrowUp':
+                break;
+            
+            default:
+                textarea.value += this.isCapsLockOn || this.isShiftOn ? key.toUpperCase() : key.toLowerCase();
+        }
+        textarea.focus();
+    }
 
     init() {
         const board = document.createElement('div');
         board.className = 'board';
         body.appendChild(board);
 
-        this.keys.en.forEach(element => {
+        this.currentKeys.forEach(element => {
             const keyButton = document.createElement('div');
             keyButton.className = 'key-button';
             const clearFix = document.createElement('div');
@@ -40,7 +88,7 @@ export class Keyboard {
                     board.appendChild(clearFix);
                     break;
                 case 'CapsLock':
-                    keyButton.classList.add('key-long');
+                    keyButton.classList.add('key-caps');
                     keyButton.textContent = element;
                     board.appendChild(keyButton);
                     break;
@@ -61,7 +109,7 @@ export class Keyboard {
                     board.appendChild(keyButton);
                     board.appendChild(clearFix);
                     break;
-                case 'Space':
+                case ' ':
                     keyButton.classList.add('key-space');
                     keyButton.textContent = ' ';
                     board.appendChild(keyButton);
@@ -85,13 +133,18 @@ export class Keyboard {
                 case 'Control':
                     keyButton.textContent = 'Ctrl';
                     board.appendChild(keyButton);
-                    break;             
+                    break;
 
                 default:
                     keyButton.textContent = element;
                     board.appendChild(keyButton);
                     break;
             }
+            keyButton.dataset.name = element;
+            keyButton.addEventListener('click', () => this.pressKey(element));
         });
+
+
+
     }
 }
