@@ -14,7 +14,11 @@ export class Keyboard {
             'CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'Enter',
             'Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'ArrowUp', 'Shift2',
             'Control', 'Meta', 'Alt', ' ', 'Alt', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'Control'],
-        ru: ['2', '2', '2', '3', '4', '5'],
+        ru: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace',
+            'Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'Delete',
+            'CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', "э", 'Enter',
+            'Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', 'ArrowUp', 'Shift2',
+            'Control', 'Meta', 'Alt', ' ', 'Alt', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'Control'],
     };
 
     pressKey(key) {
@@ -56,6 +60,8 @@ export class Keyboard {
                 textarea.setSelectionRange(textarea.selectionStart + 1, textarea.selectionStart + 1);
                 break;
             case 'ArrowUp':
+                break;
+            case 'Alt':
                 break;
             
             default:
@@ -115,19 +121,23 @@ export class Keyboard {
                     board.appendChild(keyButton);
                     break;
                 case 'ArrowUp':
-                    keyButton.textContent = '|';
+                    keyButton.textContent = '';
+                    keyButton.classList.add('key-arrow-up');
                     board.appendChild(keyButton);
                     break;
                 case 'ArrowDown':
-                    keyButton.textContent = '|';
+                    keyButton.textContent = '';
+                    keyButton.classList.add('key-arrow-down');
                     board.appendChild(keyButton);
                     break;
                 case 'ArrowLeft':
-                    keyButton.textContent = '<-';
+                    keyButton.textContent = '';
+                    keyButton.classList.add('key-arrow-left');
                     board.appendChild(keyButton);
                     break;
                 case 'ArrowRight':
-                    keyButton.textContent = '->';
+                    keyButton.textContent = '';
+                    keyButton.classList.add('key-arrow-right');
                     board.appendChild(keyButton);
                     break;
                 case 'Control':

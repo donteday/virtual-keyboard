@@ -46,6 +46,7 @@
 }
 
 .key-button {
+    position: relative;
     display: grid;
     width: 50px;
     height: 50px;
@@ -73,7 +74,7 @@
 }
 
 .key-space {
-    width: 400px;
+    width: 415px;
 }
 
 .key-caps:after {
@@ -91,4 +92,34 @@
 .key-caps--active:after {
     background-color: #00bf1d;
 }
+.key-arrow-right, .key-arrow-up, .key-arrow-left, .key-arrow-down {
+    position: relative;
+}
+
+.key-arrow-left::after,  .key-arrow-up::after, .key-arrow-down::after, .key-arrow-right::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    left: 25%;
+    top: 25%;
+    z-index: 1;
+    background-image: url(./src/img/right-arrow-svgrepo-com.svg);
+    background-position: center;
+    background-size: cover;
+}
+
+.key-arrow-left::after {
+    transform: rotate(180deg);
+}
+
+.key-arrow-up::after {
+    transform: rotate(-90deg);
+}
+
+.key-arrow-down::after {
+    transform: rotate(90deg);
+}
+
 

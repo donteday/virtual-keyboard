@@ -8,13 +8,14 @@ textArea.rows = 8;
 textArea.cols = 79;
 textArea.className = 'textarea';
 textArea.value = 'Wake Up Neo...';
+textArea.readOnly = true;
 body.appendChild(textArea);
 
 let pressedKeys = [];
 
 document.onkeydown = function(event) {
-    document.querySelector(`.key-button[data-name='${event.key}']`).classList.toggle('active');
-    if (event.key === 'CapsLock') keyboard.pressKey(event.key);
+
+    //if (event.key === 'CapsLock') keyboard.pressKey(event.key);
 
     if (event.key === 'Alt') {
         if (pressedKeys.indexOf('Alt') >= 0) true;
@@ -28,9 +29,12 @@ document.onkeydown = function(event) {
     if (pressedKeys.toString() === 'Alt,Shift') {
         keyboard.pressKey('Lang');
         pressedKeys = [];
-
+        body.children[3].remove();
+        keyboard.init();
     }
-
+    keyboard.pressKey(event.key);
+    document.querySelector(`.key-button[data-name='${event.key}']`).classList.toggle('active');
+    
 }
 
 document.onkeyup = function() {
