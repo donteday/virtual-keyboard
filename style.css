@@ -10,11 +10,6 @@
     font-family: 'Roboto', sans-serif;
 }
 
-br {
-    display: block;
-    width: 100%;
-}
-
 .clearfix {
     display: block;
     width: 100%;
@@ -50,7 +45,7 @@ br {
     font-size: 30px;
 }
 
-.key-button, i {
+.key-button {
     display: grid;
     width: 50px;
     height: 50px;
@@ -60,7 +55,8 @@ br {
         -4px -4px 8px #fff;
     place-content: center;
     transition: all .5s ease;
-    background-color: #efefef;      
+    background-color: #efefef;
+    font-weight: 700;      
 }
 
 .key-button:hover, .active {
@@ -72,7 +68,7 @@ br {
 }
 
 .key-long {
-    width: 100px;
+    width: 120px;
 }
 
 .key-space {
