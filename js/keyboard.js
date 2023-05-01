@@ -159,5 +159,12 @@ export class Keyboard {
             keyButton.addEventListener('click', () => this.pressKey(element));
         });
     }
+    reload() {
+        const allButtons = document.querySelectorAll('.key-button');
 
+        for (let i = 0; i < 53; i++) {
+            allButtons[i].textContent = this.currentKeys[i];
+        }
+
+    }
 }
