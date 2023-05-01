@@ -19,7 +19,7 @@ export class Keyboard {
             'CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', "э", 'Enter',
             'Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', 'ArrowUp', 'Shift2',
             'Control', 'Meta', 'Alt', ' ', 'Alt', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'Control'],
-        shiftOnSymbols: ['~', '!', '@', '$', '%', '^', '&', '*', '(', ')', '_', '+'],
+        shiftOnSymbols: ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+'],
     };
 
     pressKey(key) {
@@ -50,10 +50,16 @@ export class Keyboard {
             case 'Tab':
                 textarea.value += '\t';
                 break;
+            case 'Shift2':
             case 'Shift':
-                for (let i = 0; i < 12; i++) {
+                for (let i = 0; i < 13; i++) {
                     document.querySelectorAll('.key-button')[i].textContent = this.keys.shiftOnSymbols[i];
                 }
+                document.querySelectorAll('.key-button').forEach(el => {
+                    if (el.textContent.length === 1) {
+                        el.textContent = !this.isCapsLockOn ? el.textContent.toUpperCase() : el.textContent.toLowerCase();
+                    }
+                })
                 break;
             case 'Delete':
                 textarea.value = textarea.value.slice(0, textarea.selectionEnd) + textarea.value.slice(textarea.selectionEnd, 1); // TODO
@@ -64,8 +70,10 @@ export class Keyboard {
             case 'ArrowRight':
                 textarea.setSelectionRange(textarea.selectionStart + 1, textarea.selectionStart + 1);
                 break;
+            case 'ArrowDown':
             case 'ArrowUp':
-                break;
+            case 'Control':
+            case 'Meta':
             case 'Alt':
                 break;
 
@@ -163,7 +171,11 @@ export class Keyboard {
         const allButtons = document.querySelectorAll('.key-button');
 
         for (let i = 0; i < 53; i++) {
-            allButtons[i].textContent = this.currentKeys[i];
+            if (this.isCapsLockOn) {
+                allButtons[i].textContent = allButtons[i].textContent.length === 1 ? this.currentKeys[i].toUpperCase() : this.currentKeys[i];
+            } else {
+                allButtons[i].textContent = allButtons[i].textContent.length === 1 ? this.currentKeys[i].toLowerCase() : this.currentKeys[i];
+            }
         }
 
     }

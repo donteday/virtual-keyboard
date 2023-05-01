@@ -61,13 +61,17 @@
     font-weight: 700;      
 }
 
-.key-button:hover, .active {
+.key-button:hover {
+    cursor: pointer;
+}
+
+.active {
     box-shadow:
      4px 4px 8px #0002,
      4px 4px 8px #ffffff;
-    cursor: pointer;
     background-color: #dedede88;
 }
+
 
 .key-long, .key-caps{
     position: relative;

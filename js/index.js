@@ -13,7 +13,7 @@ body.appendChild(textArea);
 
 let pressedKeys = [];
 
-document.onkeydown = function(event) {
+document.onkeydown = function (event) {
 
     if (event.key === 'CapsLock') keyboard.pressKey(event.key);
 
@@ -29,18 +29,26 @@ document.onkeydown = function(event) {
         }
     }
 
-    if (pressedKeys.toString() === 'Alt,Shift' || pressedKeys.toString() === 'Shift,Alt' ) {
+    if (pressedKeys.toString() === 'Alt,Shift' || pressedKeys.toString() === 'Shift,Alt') {
         keyboard.pressKey('Lang');
         pressedKeys = [];
         keyboard.reload();
     }
-    document.querySelector(`.key-button[data-name='${event.key.toLowerCase()}']`).classList.toggle('active');    
+    document.querySelector(`.key-button[data-name='${event.key.toLowerCase()}']`).classList.toggle('active');
 }
 
-document.onkeyup = function(event) {
+document.onkeyup = function (event) {
     if (event.key === 'Shift') {
         keyboard.reload();
     }
+    document.querySelectorAll('.key-button').forEach((e) => e.classList.remove('active'));
+}
+
+document.onmousedown = function (event) {
+    if (event.target.classList.contains('key-button')) event.target.classList.toggle('active');
+}
+
+document.onmouseup = function () {
     document.querySelectorAll('.key-button').forEach((e) => e.classList.remove('active'));
 }
 
