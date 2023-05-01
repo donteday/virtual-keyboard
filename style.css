@@ -126,7 +126,7 @@
 }
 
 .board::after {
-    content: "Переключение языка: Alt+Shift";
+    content: "Переключение языка: Alt+Ctrl";
     display: block;
     position: absolute;
     bottom: -30px;
