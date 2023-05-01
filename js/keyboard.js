@@ -36,13 +36,11 @@ export class Keyboard {
                 break;
             case 'CapsLock':
                 this.isCapsLockOn = !this.isCapsLockOn;
-
                 document.querySelectorAll('.key-button').forEach(el => {
                     if (el.textContent.length === 1) {
                         el.textContent = this.isCapsLockOn ? el.textContent.toUpperCase() : el.textContent.toLowerCase();
                     }
                 })
-
                 document.querySelector('.key-caps').classList.toggle('key-caps--active');
                 break;
             case 'Enter':
