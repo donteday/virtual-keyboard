@@ -22,23 +22,32 @@ document.onkeydown = function(event) {
         else pressedKeys.push('Alt');
     }
     if (event.key === 'Shift') {
-        if (pressedKeys.indexOf('Shift') >= 0) true;
-        else pressedKeys.push('Shift');
+        keyboard.pressKey(event.key);
+        if (pressedKeys != []) {
+            if (pressedKeys.indexOf('Shift') >= 0) true;
+            else pressedKeys.push('Shift');
+        }
     }
 
-    if (pressedKeys.toString() === 'Alt,Shift') {
+    if (pressedKeys.toString() === 'Alt,Shift' || pressedKeys.toString() === 'Shift,Alt' ) {
         keyboard.pressKey('Lang');
         pressedKeys = [];
         body.children[3].remove();
         keyboard.init();
     }
     //keyboard.pressKey(event.key);
+    console.log(pressedKeys);
     console.log(event.key);
     document.querySelector(`.key-button[data-name='${event.key.toLowerCase()}']`).classList.toggle('active');
     
 }
 
-document.onkeyup = function() {
+document.onkeyup = function(event) {
+    if (event.key === 'Shift') {
+        body.children[3].remove();
+        keyboard.init();
+    }
+
     document.querySelectorAll('.key-button').forEach((e) => e.classList.remove('active'));
 }
 
