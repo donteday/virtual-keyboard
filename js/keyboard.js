@@ -19,6 +19,7 @@ export class Keyboard {
             'CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', "э", 'Enter',
             'Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', 'ArrowUp', 'Shift2',
             'Control', 'Meta', 'Alt', ' ', 'Alt', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'Control'],
+        shiftOnSymbols: ['~', '!', '@', '$', '%', '^', '&', '*', '(', ')', '_', '+'],
     };
 
     pressKey(key) {
@@ -52,6 +53,9 @@ export class Keyboard {
                 textarea.value += '\t';
                 break;
             case 'Shift':
+                for (let i = 0; i < 12; i++) {
+                    document.querySelectorAll('.key-button')[i].textContent = this.keys.shiftOnSymbols[i];
+                }
                 break;
             case 'Delete':
                 textarea.value = textarea.value.slice(0, textarea.selectionEnd) + textarea.value.slice(textarea.selectionEnd, 1); // TODO
