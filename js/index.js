@@ -26,7 +26,7 @@ document.onkeydown = function(event) {
         else pressedKeys.push('Shift');
     }
 
-    if (pressedKeys.toString() === 'Alt,Ctrl') {
+    if (pressedKeys.toString() === 'Alt,Shift') {
         keyboard.pressKey('Lang');
         pressedKeys = [];
         body.children[3].remove();
