@@ -2,7 +2,9 @@ import { Keyboard } from './keyboard.js';
 
 const body = document.querySelector(".body");
 const textArea = document.createElement('textarea');
-const keyboard = new Keyboard('en');
+
+let lang = localStorage.getItem('lang') === null? 'en' : localStorage.getItem('lang');
+const keyboard = new Keyboard(lang);
 
 textArea.rows = 8;
 textArea.cols = 79;
@@ -30,7 +32,9 @@ document.onkeydown = function (event) {
     }
 
     if (pressedKeys.toString() === 'Alt,Shift' || pressedKeys.toString() === 'Shift,Alt') {
+        
         keyboard.pressKey('Lang');
+        localStorage.setItem('lang', keyboard.language);
         pressedKeys = [];
         keyboard.reload();
     }
